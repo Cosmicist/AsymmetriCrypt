@@ -32,6 +32,12 @@ $encrypted = Crypter::encrypt("data to encrypt", $pub);
 
 // Decrypt data
 $decrypted = Crypter::decrypt($encrypted, $priv);
+
+// Sign data
+$signature = Crypter::sign("data to sign", $priv);
+
+// Verify signature
+$signature_valid = Crypter::verify("data to sign", $signature, $pub);
 ```
 
 Docs

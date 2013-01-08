@@ -39,6 +39,31 @@ class Crypter
         return $out;
     }
 
+    public static function sign($message, PrivateKey $privkey, $url_safe = false) {
+        if(!openssl_sign($message, $signature, $privkey->getKey())) {
+            throw new \Exception("Couldn't sign message!");
+        }
+        $out = chunk_split(base64_encode($signature));
+
+        if($url_safe) {
+            $out = strtr($out, '+/=', '-_,');
+        }
+
+        return $out;
+    }
+
+    public static function verify($message, $signature, PublicKey $pubkey) {
+        $signature = base64_decode(strtr($signature, '-_,', '+/='));
+        $result = openssl_verify($message, $signature, $pubkey->getKey());
+        if($result == 0) {
+            return false;
+        }
+        if($result == 1) {
+            return true;
+        }
+        throw new \Exception("Couldn't verify message!");
+    }
+
     public static function createPrivateKey($passphrase = null, $bits = 1024) {
         // Make sure is an int
         $bits = (int)$bits;
