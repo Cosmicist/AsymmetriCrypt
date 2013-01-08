@@ -44,7 +44,7 @@ class PublicKey
         $dest_filename = "$filename.pub";
 
         if(! file_put_contents($dest_filename, $this)) {
-            throw new \Exception("Couldn't save the private key to '$dest_filename'.");
+            throw new \Exception("Couldn't save the public key to '$dest_filename'.");
         }
     }
 
