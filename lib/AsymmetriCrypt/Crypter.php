@@ -91,4 +91,14 @@ class Crypter
     public static function loadPublicKey($key) {
         return new PublicKey($key);
     }
+
+    public static function getErrors() {
+        $errors = array();
+
+        while (($e = openssl_error_string()) !== false) {
+            $errors[] = $e;
+        }
+
+        return $errors;
+    }
 }
