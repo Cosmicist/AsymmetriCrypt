@@ -1,6 +1,21 @@
 AsymmetriCrypt - Simple PHP public key cryptography
 ===================================================
 
+Installation
+------------
+
+Require `asymmetricrypt/asymmetricrypt` in your project's `composer.json`:
+
+```javascript
+{
+    "require": {
+        "asymmetricrypt/asymmetricrypt": "0.1.*"
+    }
+}
+```
+
+Now update or install your packages with `composer update` or `composer install` respectively.
+
 Usage
 -----
 
