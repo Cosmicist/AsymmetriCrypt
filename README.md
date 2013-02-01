@@ -28,6 +28,8 @@ use AsymmetriCrypt\Key\PrivateKey;
 
 // Create a private key
 $priv = Crypter::createPrivateKey();
+// or
+$priv = PrivateKey::create();
 
 // Load a private key
 $priv = Crypter::loadPrivateKey("file:///path/to/key.pem");
