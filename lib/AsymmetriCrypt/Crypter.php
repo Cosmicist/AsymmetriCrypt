@@ -70,23 +70,7 @@ class Crypter
 
     public static function createPrivateKey($passphrase = null, $bits = 1024)
     {
-        // Make sure is an int
-        $bits = (int)$bits;
-
-        // Check size
-        if ( $bits < 384 ) {
-            throw new \Exception("The bits can't be less than 384!");
-        }
-
-        // Create Private Key
-        $pkey = openssl_pkey_new(array(
-            'encrypt_key' => true,
-            'private_key_type' =>  OPENSSL_KEYTYPE_RSA, // As of 5.3, php only supports RSA keys creation
-            'private_key_bits' => $bits,
-        ));
-        if (! $pkey) throw new \Exception("Couldn't create private key!");
-
-        return new PrivateKey($pkey, $passphrase);
+        return PrivateKey::create($passphrase, $bits);
     }
 
     public static function loadPrivateKey($key, $passphrase = null)
