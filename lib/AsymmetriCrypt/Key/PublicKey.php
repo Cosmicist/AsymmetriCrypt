@@ -28,30 +28,34 @@ class PublicKey
      *
      * @param mixed $key The public key file or the content itself
      */
-    public function __construct ($key) {
+    public function __construct($key)
+    {
         if (file_exists($key)) {
             $key = file_get_contents($key);
         }
-        if(! ($key = openssl_pkey_get_public($key))) {
+        if (! ($key = openssl_pkey_get_public($key))) {
             throw new \Exception("Failed to load the public key.");
         }
 
         $this->key = $key;
     }
 
-    public function getKey() {
+    public function getKey()
+    {
         return $this->key;
     }
 
-    public function save($filename) {
+    public function save($filename)
+    {
         $dest_filename = "$filename.pub";
 
-        if(! file_put_contents($dest_filename, $this)) {
+        if (! file_put_contents($dest_filename, $this)) {
             throw new \Exception("Couldn't save the public key to '$dest_filename'.");
         }
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $details = openssl_pkey_get_details($this->key);
         
         return $details['key'];

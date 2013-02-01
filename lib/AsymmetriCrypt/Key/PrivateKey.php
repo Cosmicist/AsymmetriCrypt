@@ -28,7 +28,8 @@ class PrivateKey
      */
     protected $details;
 
-    public function __construct ($pkey, $passphrase = null) {
+    public function __construct($pkey, $passphrase = null)
+    {
         if (! is_resource($pkey)) {
             if (file_exists($pkey)) {
                 $pkey = file_get_contents($pkey);
@@ -40,27 +41,31 @@ class PrivateKey
 
         $this->pkey = $pkey;
         $this->pass = $passphrase;
-        $this->details = openssl_pkey_get_details( $pkey );
+        $this->details = openssl_pkey_get_details($pkey);
     }
 
-    public function getKey() {
+    public function getKey()
+    {
         return $this->pkey;
     }
 
-    public function getPublicKey() {
+    public function getPublicKey()
+    {
         return new PublicKey($this->details['key']);
     }
 
-    public function save($filename) {
+    public function save($filename)
+    {
         $dest_filename = "$filename.pem";
 
-        if(! file_put_contents($dest_filename, $this)) {
-            throw new \Exception( "Couldn't save the private key to '$dest_filename'.");
+        if (! file_put_contents($dest_filename, $this)) {
+            throw new \Exception("Couldn't save the private key to '$dest_filename'.");
         }
     }
 
-    public function __toString() {
-        if(! openssl_pkey_export($this->pkey, $out, $this->pass) ) {
+    public function __toString()
+    {
+        if (! openssl_pkey_export($this->pkey, $out, $this->pass) ) {
             throw new \Exception("Couldn't export private key!");
         }
 
