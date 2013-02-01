@@ -30,7 +30,10 @@ class PrivateKey
 
     public function __construct ($pkey, $passphrase = null) {
         if (! is_resource($pkey)) {
-            if(!$pkey = openssl_pkey_get_private( $pkey, $passphrase )) {
+            if (file_exists($pkey)) {
+                $pkey = file_get_contents($pkey);
+            }
+            if (!($pkey = openssl_pkey_get_private($pkey, $passphrase))) {
                 throw new \Exception("Failed to load the private key.");
             }
         }

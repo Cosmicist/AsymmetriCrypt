@@ -29,6 +29,9 @@ class PublicKey
      * @param mixed $key The public key file or the content itself
      */
     public function __construct ($key) {
+        if (file_exists($key)) {
+            $key = file_get_contents($key);
+        }
         if(! ($key = openssl_pkey_get_public($key))) {
             throw new \Exception("Failed to load the public key.");
         }
