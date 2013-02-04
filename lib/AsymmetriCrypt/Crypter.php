@@ -2,7 +2,7 @@
 
 /*
  * AsymmetriCrypt - A PHP public key cryptography library
- * 
+ *
  * @author    Luciano Longo <luciano.longo@studioigins.net>
  * @copyright (c) Luciano Longo
  * @license   http://opensource.org/licenses/mit-license.php MIT License

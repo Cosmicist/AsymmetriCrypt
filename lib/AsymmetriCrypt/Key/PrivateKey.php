@@ -2,7 +2,7 @@
 
 /*
  * AsymmetriCrypt - A PHP public key cryptography library
- * 
+ *
  * @author    Luciano Longo <luciano.longo@studioigins.net>
  * @copyright (c) Luciano Longo
  * @license   http://opensource.org/licenses/mit-license.php MIT License
@@ -47,10 +47,10 @@ class PrivateKey
     public static function create($passphrase = null, $bits = 1024)
     {
         // Make sure is an int
-        $bits = (int)$bits;
+        $bits = (int) $bits;
 
         // Check size
-        if ( $bits < 384 ) {
+        if ($bits < 384) {
             throw new \Exception("The bits can't be less than 384!");
         }
 
@@ -61,7 +61,6 @@ class PrivateKey
             'private_key_bits' => $bits,
         ));
         if (! $pkey) throw new \Exception("Couldn't create private key!");
-
         return new static($pkey, $passphrase);
     }
 
