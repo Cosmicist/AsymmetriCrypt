@@ -1,6 +1,8 @@
 AsymmetriCrypt - Simple PHP public key cryptography
 ===================================================
 
+[![Build Status](https://travis-ci.org/xFlatlinex/AsymmetriCrypt.png)](https://travis-ci.org/xFlatlinex/AsymmetriCrypt)
+
 Installation
 ------------
 
