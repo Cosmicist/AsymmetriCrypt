@@ -63,3 +63,7 @@ Docs
 ----
 
 I'm still working on a detailed documentation, but I don't have an ETA.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/xFlatlinex/asymmetricrypt/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
