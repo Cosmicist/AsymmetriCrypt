@@ -23,7 +23,7 @@ class Crypter
 
     public static function encrypt($message, PublicKey $pubkey, $url_safe = false)
     {
-        openssl_public_encrypt($message, $out, $pubkey->getKey());
+        openssl_public_encrypt($message, $out, $pubkey->getKey(), OPENSSL_PKCS1_OAEP_PADDING);
         $out = chunk_split(base64_encode($out));
 
         if ($url_safe) {
@@ -36,7 +36,7 @@ class Crypter
     public static function decrypt($message, PrivateKey $privkey)
     {
         $message = base64_decode(strtr($message, '-_,', '+/='));
-        openssl_private_decrypt($message, $out, $privkey->getKey());
+        openssl_private_decrypt($message, $out, $privkey->getKey(), OPENSSL_PKCS1_OAEP_PADDING);
 
         return $out;
     }
